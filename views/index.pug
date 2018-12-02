@@ -1,0 +1,17 @@
+html
+    head
+        title  Parcial
+    body 
+        h1 Adminitrador de tareas
+        .errors
+        form(action="/api/Influencer", method='Post', name='vista' )
+        input#materia(type='text', class='materia')
+        input#uv(type='text', class='uv')
+        input#desc(type='text', class='desc')
+        table
+            thead   
+                th id
+                th materia
+                th uv
+            tbody. posts
+            script(src='/javascripts/main.js')

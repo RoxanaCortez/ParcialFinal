@@ -1,5 +1,5 @@
 const mongoose = require('mongoose'),
-postModel = require('../models/Post');
+postModel = require('../models/Influencer');
 
 PostController ={};
 //creando
@@ -20,7 +20,7 @@ PostController.create = function(req,res){
                 res.status(500);
                 res.json({code:500,err});
             }else{
-                res.json({ok:true, message:'se ha guardado con exito',data});
+                res.json({200:true, message:'se ha guardado con exito',data});
             }
        });
     }else{
@@ -37,7 +37,7 @@ PostController.getAll = function(req,res){
             res.status(500);
             res.json({code:500,err});
         }else{
-            res.json(posts);
+            res.json({200:true, posts});
         }
     });
 },
@@ -48,12 +48,12 @@ PostController.get = function(req,res){
             res.status(500);
             res.json({code:500,err}); 
         }else{
-            res.json(post);
+            res.json({200:true, post});
         }
     });
 },
 //Update
-postModel.update = function(req,res){
+PostController.update = function(req,res){
     let update={
         materia:req.body.materia,
         uv:req.body.uv,
@@ -64,19 +64,19 @@ postModel.update = function(req,res){
             res.status(500);
             res.json({code:500,err}); 
         }else{
-            res.json({ok:true,old,update});
+            res.json({200:true,old,update});
         }
     });
 },
 
 //delete
-postModel.delete = function(req,res){
+PostController.delete = function(req,res){
     postModel.findByIdAndRemove(req.params.id, function(err,eliminado){
         if(err){
             res.status(500);
             res.json({code:500,err}); 
         }else{
-            res.json({ok:true,eliminado});
+            res.json({200:true,eliminado});
         }
     });
 }
